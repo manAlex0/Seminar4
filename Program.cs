@@ -23,12 +23,25 @@ void FindSums(int[] array)
     int sumP = 0;
     int sumN = 0;
     for (int i = 0; i < array.Length; i++)
-        if (array[i]>0)
-            sumP+=array[i];
+        if (array[i] > 0)
+            sumP += array[i];
         else
-            sumN+=array[i];
+            sumN += array[i];
     System.Console.WriteLine($"Сумма положительных элементов массива равно: {sumP}");
     System.Console.WriteLine($"Сумма отрицательных элементов массива равно: {sumN}");
+}
+
+int[] FindSums2(int[] array)
+{
+    int sumP = 0;
+    int sumN = 0;
+    for (int i = 0; i < array.Length; i++)
+        if (array[i] > 0)
+            sumP += array[i];
+        else
+            sumN += array[i];
+    int[] result = { sumP, sumN };
+    return result;
 }
 
 
@@ -38,3 +51,6 @@ int[] array = new int[12];
 FillArray(array);
 PrintArray(array);
 FindSums(array);
+int[] result = FindSums2(array);
+System.Console.WriteLine($"Сумма положительных элементов массива равно: {result[0]}");
+System.Console.WriteLine($"Сумма отрицательных элементов массива равно: {result[1]}");
