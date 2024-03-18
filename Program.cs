@@ -175,41 +175,41 @@
 // [1, 2, 3, 6, 2] -> 0
 // [10, 11, 12, 13, 14] -> 5
 
-void FillArray (int[] array)
-{
-    for (var i = 0; i < array.Length; i++)
-    {
-        array[i] = new Random().Next(-100, 100);
-    }
-}
+// void FillArray (int[] array)
+// {
+//     for (var i = 0; i < array.Length; i++)
+//     {
+//         array[i] = new Random().Next(-100, 100);
+//     }
+// }
 
-void PrintArray (int[] array)
-{
-    for (var i = 0; i < array.Length; i++)
-    {
-        System.Console.Write($"{array[i]} ");
-    }
-}
+// void PrintArray (int[] array)
+// {
+//     for (var i = 0; i < array.Length; i++)
+//     {
+//         System.Console.Write($"{array[i]} ");
+//     }
+// }
 
-int FindNum(int[] array)
-{
-    int result = 0;
-    for (var i = 0; i < array.Length; i++)
-    {
-        if(array[i] < 99 && array[i] > 10)
-        result++;
-    }
-    return result;
-}
+// int FindNum(int[] array)
+// {
+//     int result = 0;
+//     for (var i = 0; i < array.Length; i++)
+//     {
+//         if(array[i] < 99 && array[i] > 10)
+//         result++;
+//     }
+//     return result;
+// }
 
 
 
-int[] array = new int[15];
-FillArray(array);
-PrintArray(array);
-System.Console.WriteLine();
-int result = FindNum(array);
-System.Console.WriteLine($"Колличество элементов массива в отрезке [10 99] равна: {result}");
+// int[] array = new int[15];
+// FillArray(array);
+// PrintArray(array);
+// System.Console.WriteLine();
+// int result = FindNum(array);
+// System.Console.WriteLine($"Колличество элементов массива в отрезке [10 99] равна: {result}");
 
 
 
@@ -221,3 +221,37 @@ System.Console.WriteLine($"Колличество элементов масси�
 // Пример:
 // [1, 2, 3, 4, 5] -> 5 8 3
 // [6, 7, 3, 6] -> 36 21
+
+void FillArray(int[] array)
+{
+    for (var i = 0; i < array.Length; i++) array[i] = new Random().Next(0, 10);
+}
+
+void PrintArray(int[] array)
+{
+    for (var i = 0; i < array.Length; i++) System.Console.Write($"{array[i]} ");
+}
+
+void FindArray(int[] array, int[] newArray)
+{
+    int maxIndex = array.Length - 1;
+    for (int i = 0; i < maxIndex; i++)
+    {
+        newArray[i] = array[i] * array[maxIndex];
+        maxIndex -= 1;
+    }
+    newArray[maxIndex] = array[array.Length/2];
+}
+
+System.Console.WriteLine("Введите количество массива: ");
+int[] array = new int[Convert.ToInt32(Console.ReadLine())];
+int indexNewArray = 0;
+if (array.Length % 2 == 0) //нужно попробовать сделать методм!!!
+    indexNewArray = 0;
+else indexNewArray += 1;
+int[] newArray = new int[(array.Length / 2) + indexNewArray];
+FillArray(array);
+PrintArray(array);
+FindArray(array, newArray);
+System.Console.WriteLine();
+PrintArray(newArray);
