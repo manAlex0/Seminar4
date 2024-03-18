@@ -66,37 +66,40 @@
 // Пример:
 // [-4, -8, 8, 2] -> [4, 8, -8, 2]
 
-void FillArray (int [] array)
-{
-    for (int i = 0; i < array.Length; i++)
-    {
-        array[i] = new Random().Next(-99, 99);
-    }
-}
+// void FillArray(int[] array)
+// {
+//     for (int i = 0; i < array.Length; i++)
+//     {
+//         array[i] = new Random().Next(-99, 99);
+//     }
+// }
 
-void PrintArray (int [] array)
-{
-    foreach (var item in array)
-    {
-        System.Console.Write($"{item} ");
-    }
-    System.Console.WriteLine();
-}
+// void PrintArray(int[] array)
+// {
+//     foreach (var item in array)
+//     {
+//         System.Console.Write($"{item} ");
+//     }
+//     System.Console.WriteLine();
+// }
 
-void ReplacementArray (int [] array)
-{
-    for (int i = 0; i < array.Length; i++)
-    {
-        array[i]*=-1;
-    }
-}
+// void ReplacementArray(int[] array)
+// {
+//     for (int i = 0; i < array.Length; i++)
+//     {
+//         array[i] *= -1;
+//     }
+// }
 
-Console.Clear();
-int [] array = new int[4];
-FillArray(array);
-PrintArray(array);
-ReplacementArray(array);
-PrintArray(array);
+// Console.Clear();
+// int[] array = new int[4];
+// FillArray(array);
+// PrintArray(array);
+// ReplacementArray(array);
+// PrintArray(array);
+
+
+
 
 
 // **********************************************************************************************
@@ -105,3 +108,59 @@ PrintArray(array);
 // Пример:
 // 4; массив [6, 7, 19, 345, 3] -> нет.
 // -3; массив [6, 7, 19, 345, 3] -> да.
+
+void FillArray(int[] array)
+{
+    for (var i = 0; i < array.Length; i++)
+    {
+        array[i] = new Random().Next(-9, 10);
+    }
+}
+
+void PrintArray(int[] array)
+{
+    for (var i = 0; i < array.Length; i++)
+    {
+        System.Console.Write($"{array[i]} ");
+    }
+}
+
+// string FindNum(int[] array, int num)
+// {
+//     string result = "Нет";
+//     for (var i = 0; i < array.Length; i++)
+//         if (array[i] == num || (array[i] *= -1) == num)
+//             result = "Да";
+//     return result;
+// }
+
+
+bool FindNum(int[] array, int num)
+{
+    bool numPresent = false;
+    for (int i = 0; i < array.Length; i++)
+        if (array[i] == num | (array[i] *= -1) == num)
+            numPresent = true;
+    return numPresent;
+}
+
+void PrintIndex(int[] array, int num)
+{
+    for (var i = 0; i < array.Length; i++)
+    {
+        if (array[i] == num | (array[i] *= -1) == num)
+        System.Console.WriteLine($"Идекс: {i}");
+    }
+}
+
+
+int[] array = new int[5];
+
+FillArray(array);
+PrintArray(array);
+
+System.Console.WriteLine("Введите число: ");
+int numUser = int.Parse(Console.ReadLine()!);
+
+PrintIndex(array, numUser);
+System.Console.WriteLine(FindNum(array, numUser));
