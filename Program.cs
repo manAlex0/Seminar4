@@ -134,7 +134,10 @@ bool FindNum(int[] array, int num)
     bool numPresent = false;
     for (int i = 0; i < array.Length; i++)
         if (array[i] == num | (array[i] *= -1) == num)
+            {
             numPresent = true;
+            break;
+            }
     return numPresent;
 }
 
