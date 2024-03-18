@@ -103,15 +103,87 @@
 // 4; массив [6, 7, 19, 345, 3] -> нет.
 // -3; массив [6, 7, 19, 345, 3] -> да.
 
-void FillArray(int[] array)
+// void FillArray(int[] array)
+// {
+//     for (var i = 0; i < array.Length; i++)
+//     {
+//         array[i] = new Random().Next(-9, 10);
+//     }
+// }
+
+// void PrintArray(int[] array)
+// {
+//     for (var i = 0; i < array.Length; i++)
+//     {
+//         System.Console.Write($"{array[i]} ");
+//     }
+// }
+
+// // string FindNum(int[] array, int num)
+// // {
+// //     string result = "Нет";
+// //     for (var i = 0; i < array.Length; i++)
+// //         if (array[i] == num || (array[i] *= -1) == num)
+// //             result = "Да";
+// //     return result;
+// // }
+
+
+// bool FindNum(int[] array, int num)
+// {
+//     bool numPresent = false;
+//     for (int i = 0; i < array.Length; i++)
+//         if (array[i] == num | (array[i] *= -1) == num)
+//             {
+//             numPresent = true;
+//             break;
+//             }
+//     return numPresent;
+// }
+
+// void PrintIndex(int[] array, int num)
+// {
+//     for (var i = 0; i < array.Length; i++)
+//     {
+//         if (array[i] == num | (array[i] *= -1) == num)
+//         System.Console.WriteLine($"Идекс: {i}");
+//     }
+// }
+
+
+// int[] array = new int[5];
+
+// FillArray(array);
+// PrintArray(array);
+
+// System.Console.WriteLine("Введите число: ");
+// int numUser = int.Parse(Console.ReadLine()!);
+
+// PrintIndex(array, numUser);
+// System.Console.WriteLine(FindNum(array, numUser));
+
+
+
+
+
+// **********************************************************************************************
+// Задача 35: Задайте одномерный массив из 15 случайных чисел от -100 до 100.
+// Найдите количество элементов массива, значения которых лежат в
+// отрезке [10, 99]
+// Пример для массива из 5, а не 15 элементов. В своём решении сделайте для 15:
+// [5, 18, 123, 6, 2] -> 1
+// [1, 2, 3, 6, 2] -> 0
+// [10, 11, 12, 13, 14] -> 5
+
+void FillArray (int[] array)
 {
     for (var i = 0; i < array.Length; i++)
     {
-        array[i] = new Random().Next(-9, 10);
+        array[i] = new Random().Next(-100, 100);
     }
 }
 
-void PrintArray(int[] array)
+void PrintArray (int[] array)
 {
     for (var i = 0; i < array.Length; i++)
     {
@@ -119,45 +191,33 @@ void PrintArray(int[] array)
     }
 }
 
-// string FindNum(int[] array, int num)
-// {
-//     string result = "Нет";
-//     for (var i = 0; i < array.Length; i++)
-//         if (array[i] == num || (array[i] *= -1) == num)
-//             result = "Да";
-//     return result;
-// }
-
-
-bool FindNum(int[] array, int num)
+int FindNum(int[] array)
 {
-    bool numPresent = false;
-    for (int i = 0; i < array.Length; i++)
-        if (array[i] == num | (array[i] *= -1) == num)
-            {
-            numPresent = true;
-            break;
-            }
-    return numPresent;
-}
-
-void PrintIndex(int[] array, int num)
-{
+    int result = 0;
     for (var i = 0; i < array.Length; i++)
     {
-        if (array[i] == num | (array[i] *= -1) == num)
-        System.Console.WriteLine($"Идекс: {i}");
+        if(array[i] < 99 && array[i] > 10)
+        result++;
     }
+    return result;
 }
 
 
-int[] array = new int[5];
 
+int[] array = new int[15];
 FillArray(array);
 PrintArray(array);
+System.Console.WriteLine();
+int result = FindNum(array);
+System.Console.WriteLine($"Колличество элементов массива в отрезке [10 99] равна: {result}");
 
-System.Console.WriteLine("Введите число: ");
-int numUser = int.Parse(Console.ReadLine()!);
 
-PrintIndex(array, numUser);
-System.Console.WriteLine(FindNum(array, numUser));
+
+
+// **********************************************************************************************
+// Задача 37: Найдите произведение пар чисел в одномерном массиве.
+// Парой считаем первый и последний элемент, второй и предпоследний и т.д.
+// Результат запишите в новом массиве.
+// Пример:
+// [1, 2, 3, 4, 5] -> 5 8 3
+// [6, 7, 3, 6] -> 36 21
