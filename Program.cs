@@ -240,6 +240,7 @@ void FindArray(int[] array, int[] newArray)
         newArray[i] = array[i] * array[maxIndex];
         maxIndex -= 1;
     }
+    if (array.Length % 2 != 0)
     newArray[maxIndex] = array[array.Length/2];
 }
 
