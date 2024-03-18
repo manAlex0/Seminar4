@@ -69,26 +69,20 @@
 // void FillArray(int[] array)
 // {
 //     for (int i = 0; i < array.Length; i++)
-//     {
 //         array[i] = new Random().Next(-99, 99);
-//     }
 // }
 
 // void PrintArray(int[] array)
 // {
 //     foreach (var item in array)
-//     {
 //         System.Console.Write($"{item} ");
-//     }
 //     System.Console.WriteLine();
 // }
 
 // void ReplacementArray(int[] array)
 // {
 //     for (int i = 0; i < array.Length; i++)
-//     {
 //         array[i] *= -1;
-//     }
 // }
 
 // Console.Clear();
