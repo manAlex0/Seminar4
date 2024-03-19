@@ -222,15 +222,15 @@
 // [1, 2, 3, 4, 5] -> 5 8 3
 // [6, 7, 3, 6] -> 36 21
 
-void FillArray(int[] array)
-{
-    for (var i = 0; i < array.Length; i++) array[i] = new Random().Next(0, 10);
-}
+// void FillArray(int[] array)
+// {
+//     for (var i = 0; i < array.Length; i++) array[i] = new Random().Next(0, 10);
+// }
 
-void PrintArray(int[] array)
-{
-    for (var i = 0; i < array.Length; i++) System.Console.Write($"{array[i]} ");
-}
+// void PrintArray(int[] array)
+// {
+//     for (var i = 0; i < array.Length; i++) System.Console.Write($"{array[i]} ");
+// }
 
 // void FindArray(int[] array, int[] newArray)
 // {
@@ -243,27 +243,6 @@ void PrintArray(int[] array)
 //     if (array.Length % 2 != 0)
 //     newArray[maxIndex] = array[array.Length/2];
 // }
-
-int[] NewArray(int[] array)                   // Другое решение
-{
-    int[] result = new int[array.Length / 2 + array.Length % 2];
-    int j = array.Length - 1;
-    for (var i = 0; i < array.Length / 2; i++)
-    {
-        result[i] = array[i] * array[j - i];
-    }
-    if (array.Length % 2 != 0)
-        result[^1] = array[array.Length / 2];
-    return result;
-}
-
-
-
-int[] array = new int[5];                    // Другое решение
-FillArray(array);
-PrintArray(array);
-System.Console.WriteLine();
-PrintArray(NewArray(array));
 
 
 
@@ -280,3 +259,37 @@ PrintArray(NewArray(array));
 // System.Console.WriteLine();
 // PrintArray(newArray);
 
+
+
+// ************************************************************************Другое решение
+
+void FillArray(int[] array)
+{
+    for (var i = 0; i < array.Length; i++) array[i] = new Random().Next(0, 10);
+}
+
+void PrintArray(int[] array)
+{
+    for (var i = 0; i < array.Length; i++) System.Console.Write($"{array[i]} ");
+}
+
+int[] NewArray(int[] array)
+{
+    int[] result = new int[array.Length / 2 + array.Length % 2];
+    int j = array.Length - 1;
+    for (var i = 0; i < array.Length / 2; i++)
+    {
+        result[i] = array[i] * array[j - i];
+    }
+    if (array.Length % 2 != 0)
+        result[^1] = array[array.Length / 2];
+    return result;
+}
+
+
+
+int[] array = new int[5];
+FillArray(array);
+PrintArray(array);
+System.Console.WriteLine();
+PrintArray(NewArray(array));
