@@ -263,33 +263,106 @@
 
 // ************************************************************************Другое решение
 
+// void FillArray(int[] array)
+// {
+//     for (var i = 0; i < array.Length; i++) array[i] = new Random().Next(0, 10);
+// }
+
+// void PrintArray(int[] array)
+// {
+//     for (var i = 0; i < array.Length; i++) System.Console.Write($"{array[i]} ");
+// }
+
+// int[] NewArray(int[] array)
+// {
+//     int[] result = new int[array.Length / 2 + array.Length % 2];
+//     int j = array.Length - 1;
+//     for (var i = 0; i < array.Length / 2; i++)
+//     {
+//         result[i] = array[i] * array[j - i];
+//     }
+//     if (array.Length % 2 != 0)
+//         result[^1] = array[array.Length / 2];
+//     return result;
+// }
+
+
+
+// int[] array = new int[5];
+// FillArray(array);
+// PrintArray(array);
+// System.Console.WriteLine();
+// PrintArray(NewArray(array));
+
+
+
+
+// **********************************************************************************************ПРАКТИЧЕСКОЕ ЗАДАНИЕ*************************************************************
+
+// **********************************************************************************************
+// Задача 34: Задайте массив заполненный случайными положительными трёхзначными числами.
+// Напишите программу, которая покажет количество чётных чисел в массиве.
+// Примен:
+// [345, 897, 568, 234] -> 2
+
 void FillArray(int[] array)
 {
-    for (var i = 0; i < array.Length; i++) array[i] = new Random().Next(0, 10);
+    for (var i = 0; i < array.Length; i++) array[i] = new Random().Next(100, 999);
 }
 
 void PrintArray(int[] array)
 {
-    for (var i = 0; i < array.Length; i++) System.Console.Write($"{array[i]} ");
+    foreach (var item in array)
+        System.Console.Write($"{item} ");
+    System.Console.WriteLine();
 }
 
-int[] NewArray(int[] array)
+int FindArray(int[] array)
 {
-    int[] result = new int[array.Length / 2 + array.Length % 2];
-    int j = array.Length - 1;
-    for (var i = 0; i < array.Length / 2; i++)
+    int result = 0;
+    for (var i = 0; i < array.Length; i++)
     {
-        result[i] = array[i] * array[j - i];
+        if (array[i] % 2 == 0)
+            result++;
+        if (array[i] / 10 % 2 == 0)
+            result++;
+        if (array[i] / 100 % 2 == 0)
+            result++;
     }
-    if (array.Length % 2 != 0)
-        result[^1] = array[array.Length / 2];
     return result;
 }
 
 
-
-int[] array = new int[5];
+Console.Clear();
+System.Console.WriteLine("Введите размер массива: ");
+int[] array = new int[int.Parse(Console.ReadLine()!)];
 FillArray(array);
 PrintArray(array);
-System.Console.WriteLine();
-PrintArray(NewArray(array));
+System.Console.WriteLine(FindArray(array));
+
+// **********************************************************************************************
+// Задача 36: Задайте одномерный массив, заполненный случайными числами.
+// Найдите сумму элементов, стоящих на нечётных позициях.
+// Примен:
+// [3, 7, 23, 12] -> 19
+// [-4, -6, 89, 6] -> 0
+
+
+
+
+
+
+// **********************************************************************************************
+// Задача 38: Задайте массив вещественных чисел.
+// Найдите разницу между максимальным и минимальным элементов массива.
+
+
+
+
+// **********************************************************************************************
+// Задача HARD STAT необязательная: Задайте массив случайных целых чисел.
+// Найдите максимальный элемент и его индекс, минимальный элемент и его индекс,
+// среднее арифметическое всех элементов.
+// Сохранить эту инфу в отдельный массив и вывести на экран с пояснениями.
+// Найти медианное значение первоначалального массива,
+// возможно придется кое-что для этого дополнительно выполнить.
