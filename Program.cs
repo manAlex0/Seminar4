@@ -232,27 +232,51 @@ void PrintArray(int[] array)
     for (var i = 0; i < array.Length; i++) System.Console.Write($"{array[i]} ");
 }
 
-void FindArray(int[] array, int[] newArray)
+// void FindArray(int[] array, int[] newArray)
+// {
+//     int maxIndex = array.Length - 1;
+//     for (int i = 0; i < maxIndex; i++)
+//     {
+//         newArray[i] = array[i] * array[maxIndex];
+//         maxIndex -= 1;
+//     }
+//     if (array.Length % 2 != 0)
+//     newArray[maxIndex] = array[array.Length/2];
+// }
+
+int[] NewArray(int[] array)                   // Другое решение
 {
-    int maxIndex = array.Length - 1;
-    for (int i = 0; i < maxIndex; i++)
+    int[] result = new int[array.Length / 2 + array.Length % 2];
+    int j = array.Length - 1;
+    for (var i = 0; i < array.Length / 2; i++)
     {
-        newArray[i] = array[i] * array[maxIndex];
-        maxIndex -= 1;
+        result[i] = array[i] * array[j - i];
     }
     if (array.Length % 2 != 0)
-    newArray[maxIndex] = array[array.Length/2];
+        result[^1] = array[array.Length / 2];
+    return result;
 }
 
-System.Console.WriteLine("Введите количество массива: ");
-int[] array = new int[Convert.ToInt32(Console.ReadLine())];
-int indexNewArray = 0;
-if (array.Length % 2 == 0) //нужно попробовать сделать методм!!!
-    indexNewArray = 0;
-else indexNewArray += 1;
-int[] newArray = new int[(array.Length / 2) + indexNewArray];
+
+
+int[] array = new int[5];                    // Другое решение
 FillArray(array);
 PrintArray(array);
-FindArray(array, newArray);
 System.Console.WriteLine();
-PrintArray(newArray);
+PrintArray(NewArray(array));
+
+
+
+// System.Console.WriteLine("Введите количество массива: ");
+// int[] array = new int[Convert.ToInt32(Console.ReadLine())];
+// int indexNewArray = 0;
+// if (array.Length % 2 == 0) //нужно попробовать сделать методм!!!
+//     indexNewArray = 0;
+// else indexNewArray += 1;
+// int[] newArray = new int[(array.Length / 2) + indexNewArray];
+// FillArray(array);
+// PrintArray(array);
+// FindArray(array, newArray);
+// System.Console.WriteLine();
+// PrintArray(newArray);
+
