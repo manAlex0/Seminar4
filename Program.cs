@@ -353,40 +353,76 @@
 // [3, 7, 23, 12] -> 19
 // [-4, -6, 89, 6] -> 0
 
-void FillArray (int[] array)
-{
-    for (var i = 0; i < array.Length; i++) array[i] = new Random().Next(-99,99);
-}
+// void FillArray (int[] array)
+// {
+//     for (var i = 0; i < array.Length; i++) array[i] = new Random().Next(-99,99);
+// }
 
-void PrintArray (int[] array)
-{
-    foreach (var item in array) System.Console.Write($"{item} ");
-}
+// void PrintArray (int[] array)
+// {
+//     foreach (var item in array) System.Console.Write($"{item} ");
+// }
 
-int FindArray ( int[] array)
-{
-    int result = 0;
-    for (var i = 1; i < array.Length; i+=2)
-    {
-        result+=array[i];
-    }
-    return result;
-}
+// int FindArray ( int[] array)
+// {
+//     int result = 0;
+//     for (var i = 1; i < array.Length; i+=2)
+//     {
+//         result+=array[i];
+//     }
+//     return result;
+// }
 
 
 
-System.Console.WriteLine("Введите размер рандомного массива: ");
-int[] array = new int [Convert.ToInt32(Console.ReadLine())];
+// System.Console.WriteLine("Введите размер рандомного массива: ");
+// int[] array = new int [Convert.ToInt32(Console.ReadLine())];
 
-FillArray(array);
-PrintArray(array);
-System.Console.WriteLine();
-System.Console.WriteLine(FindArray(array));
+// FillArray(array);
+// PrintArray(array);
+// System.Console.WriteLine();
+// System.Console.WriteLine(FindArray(array));
+
+
+
 
 
 // **********************************************************************************************
 // Задача 38: Задайте массив вещественных чисел.
 // Найдите разницу между максимальным и минимальным элементов массива.
+
+void FillArray(double[] array)
+{
+    for (var i = 0; i < array.Length; i++) array[i] = new Random().NextDouble();
+}
+
+void PrintArray(double[] array)
+{
+    foreach (var item in array) System.Console.Write($"{item} ");
+}
+
+double FindArray(double[] array)
+{
+    double result = 0;
+    double max = array[0];
+    double min = array[0];
+    for (var i = 0; i < array.Length; i++)
+    {
+        if(max < array[i]) max=array[i];
+        else if (min > array[i]) min = array[i];
+        result = max - min;
+    }
+    return result;
+}
+
+
+System.Console.WriteLine("Введите размер рандомного массива: ");
+double[] array = new double[int.Parse(Console.ReadLine()!)];
+
+FillArray(array);
+PrintArray(array);
+System.Console.WriteLine();
+System.Console.WriteLine(FindArray(array));
 
 
 
