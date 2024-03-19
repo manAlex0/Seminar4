@@ -305,40 +305,46 @@
 // Примен:
 // [345, 897, 568, 234] -> 2
 
-void FillArray(int[] array)
-{
-    for (var i = 0; i < array.Length; i++) array[i] = new Random().Next(100, 999);
-}
+// void FillArray(int[] array)
+// {
+//     for (var i = 0; i < array.Length; i++) array[i] = new Random().Next(100, 999);
+// }
 
-void PrintArray(int[] array)
-{
-    foreach (var item in array)
-        System.Console.Write($"{item} ");
-    System.Console.WriteLine();
-}
+// void PrintArray(int[] array)
+// {
+//     foreach (var item in array)
+//         System.Console.Write($"{item} ");
+//     System.Console.WriteLine();
+// }
 
-int FindArray(int[] array)
-{
-    int result = 0;
-    for (var i = 0; i < array.Length; i++)
-    {
-        if (array[i] % 2 == 0)
-            result++;
-        if (array[i] / 10 % 2 == 0)
-            result++;
-        if (array[i] / 100 % 2 == 0)
-            result++;
-    }
-    return result;
-}
+// int FindArray(int[] array)
+// {
+//     int result = 0;
+//     for (var i = 0; i < array.Length; i++)
+//     {
+//         if (array[i] % 2 == 0)
+//             result++;
+//         if (array[i] / 10 % 2 == 0)
+//             result++;
+//         if (array[i] / 100 % 2 == 0)
+//             result++;
+//     }
+//     return result;
+// }
 
 
-Console.Clear();
-System.Console.WriteLine("Введите размер массива: ");
-int[] array = new int[int.Parse(Console.ReadLine()!)];
-FillArray(array);
-PrintArray(array);
-System.Console.WriteLine(FindArray(array));
+// Console.Clear();
+// System.Console.WriteLine("Введите размер массива: ");
+// int[] array = new int[int.Parse(Console.ReadLine()!)];
+// FillArray(array);
+// PrintArray(array);
+// System.Console.WriteLine(FindArray(array));
+
+
+
+
+
+
 
 // **********************************************************************************************
 // Задача 36: Задайте одномерный массив, заполненный случайными числами.
@@ -347,9 +353,35 @@ System.Console.WriteLine(FindArray(array));
 // [3, 7, 23, 12] -> 19
 // [-4, -6, 89, 6] -> 0
 
+void FillArray (int[] array)
+{
+    for (var i = 0; i < array.Length; i++) array[i] = new Random().Next(-99,99);
+}
+
+void PrintArray (int[] array)
+{
+    foreach (var item in array) System.Console.Write($"{item} ");
+}
+
+int FindArray ( int[] array)
+{
+    int result = 0;
+    for (var i = 1; i < array.Length; i+=2)
+    {
+        result+=array[i];
+    }
+    return result;
+}
 
 
 
+System.Console.WriteLine("Введите размер рандомного массива: ");
+int[] array = new int [Convert.ToInt32(Console.ReadLine())];
+
+FillArray(array);
+PrintArray(array);
+System.Console.WriteLine();
+System.Console.WriteLine(FindArray(array));
 
 
 // **********************************************************************************************
