@@ -391,38 +391,38 @@
 // Задача 38: Задайте массив вещественных чисел.
 // Найдите разницу между максимальным и минимальным элементов массива.
 
-void FillArray(double[] array)
-{
-    for (var i = 0; i < array.Length; i++) array[i] = new Random().NextDouble();
-}
+// void FillArray(double[] array)
+// {
+//     for (var i = 0; i < array.Length; i++) array[i] = new Random().NextDouble();
+// }
 
-void PrintArray(double[] array)
-{
-    foreach (var item in array) System.Console.Write($"{item} ");
-}
+// void PrintArray(double[] array)
+// {
+//     foreach (var item in array) System.Console.Write($"{item} ");
+// }
 
-double FindArray(double[] array)
-{
-    double result = 0;
-    double max = array[0];
-    double min = array[0];
-    for (var i = 0; i < array.Length; i++)
-    {
-        if(max < array[i]) max=array[i];
-        else if (min > array[i]) min = array[i];
-        result = max - min;
-    }
-    return result;
-}
+// double FindArray(double[] array)
+// {
+//     double result = 0;
+//     double max = array[0];
+//     double min = array[0];
+//     for (var i = 0; i < array.Length; i++)
+//     {
+//         if(max < array[i]) max=array[i];
+//         else if (min > array[i]) min = array[i];
+//         result = max - min;
+//     }
+//     return result;
+// }
 
 
-System.Console.WriteLine("Введите размер рандомного массива: ");
-double[] array = new double[int.Parse(Console.ReadLine()!)];
+// System.Console.WriteLine("Введите размер рандомного массива: ");
+// double[] array = new double[int.Parse(Console.ReadLine()!)];
 
-FillArray(array);
-PrintArray(array);
-System.Console.WriteLine();
-System.Console.WriteLine(FindArray(array));
+// FillArray(array);
+// PrintArray(array);
+// System.Console.WriteLine();
+// System.Console.WriteLine(FindArray(array));
 
 
 
@@ -434,3 +434,71 @@ System.Console.WriteLine(FindArray(array));
 // Сохранить эту инфу в отдельный массив и вывести на экран с пояснениями.
 // Найти медианное значение первоначалального массива,
 // возможно придется кое-что для этого дополнительно выполнить.
+
+void FillArray(int[] array)
+{
+    for (var i = 0; i < array.Length; i++) array[i] = new Random().Next(0, 100);
+}
+
+void PrintArray(int[] array)
+{
+    foreach (var item in array) System.Console.Write($"{item} ");
+}
+
+int[] MaxValue(int[] array)
+{
+    int maxNum = 0;
+    int index = 0;
+    for (var i = 0; i < array.Length; i++)
+    {
+        if (array[i] > maxNum)
+        {
+            maxNum = array[i];
+            index = i;
+        }
+    }
+    int[] result = { maxNum, index };
+    return result;
+}
+
+int[] OrderArray(int[] array)
+{
+    int minNum = 0;
+    for (var j = 0; j < array.Length; j++)
+    {
+        for (var g = j + 1; g < array.Length; g++)
+        {
+            if (array[j] > array[g])
+            {
+                minNum = array[j];
+                array[j] = array[g];
+                array[g] = minNum;
+            }
+        }
+    }
+    return array;
+}
+
+void FindMediand(int[] array)
+{
+    if (array.Length % 2 == 0)
+    {
+    System.Console.WriteLine($"Медианное значение: {array[(array.Length / 2)-1]}, {array[array.Length / 2]}");
+    }
+    else 
+        System.Console.WriteLine($"Медианное значение: {array[array.Length / 2]}");
+}
+
+Console.Clear();
+System.Console.WriteLine("Задайте размер массива: ");
+int[] array = new int[int.Parse(Console.ReadLine()!)];
+FillArray(array);
+PrintArray(array);
+int[] result = MaxValue(array);
+System.Console.WriteLine();
+System.Console.WriteLine($"Максимальное число: {result[0]}");
+System.Console.WriteLine($"Индекс числа: {result[1]}");
+System.Console.Write("Массив с меньшего к большому: ");
+PrintArray(OrderArray(array));
+System.Console.WriteLine();
+FindMediand(OrderArray(array));
